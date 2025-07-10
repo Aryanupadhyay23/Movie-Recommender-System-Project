@@ -1,63 +1,112 @@
 # 🎬 Movie Recommender System
 
-## 📌 Introduction
+## 1. 📌 Introduction
 A **Recommender System** suggests items to users based on their preferences and behavior. This project implements a **Content-Based Movie Recommender System** that recommends movies similar to those a user has liked, based on the movie's attributes.
 
-## 🧠 Types of Recommender Systems
+🗓️ **Project Timeline**: 2 July 2025 – 7 July 2025  
+📁 **Tech Stack**: Python, Pandas, Scikit-Learn, NLTK, Streamlit, TMDB API
+
+---
+
+## 2. 🧠 Types of Recommender Systems
 - **Content-Based Filtering:** Suggests items similar to what the user liked before.
 - **Collaborative Filtering:** Suggests items liked by similar users.
 - **Hybrid Systems:** Combine both approaches for improved recommendations.
 
-## 🔁 Project Flow
+---
+
+## 3. 🔁 Project Flow
 The project follows a structured end-to-end ML pipeline:
 1. **Data Acquisition**
 2. **Data Preprocessing**
 3. **Model Building**
 4. **Website Development**
-5. **Deployment**
 
-## 🗃️ Data Acquisition
-- **Dataset Source:** [TMDB 5000 Movie Dataset on Kaggle](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
+---
+
+## 4. 🗃️ Data Acquisition
+- 📦 **Dataset Source:** [TMDB 5000 Movie Dataset on Kaggle](https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata)
 - **Files Used:**
   - `movies.csv`: General movie information
   - `credits.csv`: Cast and crew information
-- Total Movies: 4803  
-- Total Features: 20 (movies), 4 (credits)
+- **Total Movies**: 4803  
+- **Features**: 20 columns in `movies.csv`, 4 columns in `credits.csv`
 
-## 🧹 Data Preprocessing
-Key preprocessing steps:
-- **Merged** the two datasets on the `title` column.
-- **Selected** essential columns: `genres`, `id`, `keywords`, `title`, `overview`, `cast`, `crew`.
-- **Dropped** irrelevant columns and rows with missing overviews.
-- **Transformed** nested dictionary columns into readable lists.
-- **Text Cleaned** the tags by:
-  - Removing spaces in names (e.g., `Sam Worthington → SamWorthington`)
-  - Converting overviews into word lists
-- **Created** a new `tags` feature by concatenating all processed text.
+---
 
-## 🔢 Text Vectorization
-To compare movies, we convert tags into numerical vectors using:
-- **Bag of Words (BoW)** with 5000 most common words
-- **Stemming** (e.g., "running", "ran" → "run")
-- **Stopwords Removal**
+## 5. 🧹 Data Preprocessing
+### 5.1 Merging Datasets
+- Merged `movies.csv` and `credits.csv` on the `title` column to create a unified DataFrame.
+
+### 5.2 Feature Selection
+- Kept: `genres`, `id`, `keywords`, `title`, `overview`, `cast`, `crew`
+- Dropped: `budget`, `homepage`, `original_title`, `popularity`, etc.
+
+### 5.3 Handling Missing Values
+- Dropped 3 rows with missing `overview` values.
+- No duplicate records found.
+
+### 5.4 Data Transformation
+- Converted stringified list-of-dicts to proper Python objects.
+- Extracted:
+  - Genre names
+  - Top 3 cast members
+  - Director from `crew` where job == 'Director'
+
+### 5.5 Text Cleaning
+- Removed spaces in names: e.g., `"Sam Worthington"` → `"SamWorthington"`
+- Converted `overview` into word lists
+
+### 5.6 Creating the `tags` Feature
+- Concatenated `overview`, `genres`, `keywords`, `cast`, and `crew` into one unified text column called `tags`.
+
+✅ Final DataFrame contains: `movie_id`, `title`, and `tags`
+
+---
+
+## 6. 🔢 Text Vectorization
+We transformed the `tags` text column into numerical vectors using:
+
+- **Bag of Words (BoW)**: Top 5000 most frequent words
+- **Stemming**: Reduces words to their root (e.g., "running", "ran" → "run")
+- **Stopword Removal**: Eliminated common words like "the", "is", etc.
 
 ### ⚙️ Output:
-- Each movie is now represented by a **5000-dimensional vector**
-- Total similarity comparisons: **4806 x 4806**
+- Each movie → **5000-dimensional vector**
+- **Total comparisons**: 4806 × 4806
 
-## 📐 Similarity Measurement
-- We use **Cosine Similarity** to compare vectors.
-- A smaller cosine angle indicates higher similarity.
-- Similarity Matrix is precomputed for fast lookups.
+---
 
-## 🔁 Recommendation Function
+## 7. 📐 Similarity Measurement
+We used **Cosine Similarity** to measure movie similarity:
+- Smaller angle → higher similarity
+- Larger angle → lower similarity
+- Precomputed and stored as a **similarity matrix** for fast recommendations
+
+---
+
+## 8. 🎯 Recommendation Function
 When a user selects a movie:
-1. The movie's vector is retrieved.
-2. Cosine similarity with all other movies is calculated.
-3. Top 5 most similar movies are selected.
-4. Recommendations are returned.
+1. Retrieve its vector
+2. Compute cosine similarity with all movies
+3. Sort similarities in descending order
+4. Recommend top 5 most similar movies (excluding the selected one)
 
-## 🌐 Website
-- Built using **Streamlit**
-- Fetches **movie posters** using **TMDB API** for better visuals
-- Fully interactive UI for movie selection and recommendations
+---
+
+## 9. 🌐 Website
+- Developed using **Streamlit**
+- Fetches **movie posters** from the **TMDB API**
+- Fully interactive UI with:
+  - Movie dropdown selector
+  - Display of 5 similar movie recommendations
+  - Posters and titles shown in a clean layout
+
+---
+
+## 10. 🔗 Project Links
+
+| Resource              | Link                                                                 |
+|-----------------------|----------------------------------------------------------------------|
+| 📂 GitHub Repository  | https://github.com/Aryanupadhyay23/Movie-Recommender-System-Project |
+| 📂 Onedrive           | https://1drv.ms/f/s!AnIMLJJR3BeYcN944wrLT0-XUjI?e=Xd48UG |
