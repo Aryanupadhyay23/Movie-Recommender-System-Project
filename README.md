@@ -104,7 +104,34 @@ When a user selects a movie:
 
 ---
 
-## 10. 🔗 Project Links
+## 10. 🧾 Learning Outcomes
+
+By completing this project, I gained hands-on experience and a deeper understanding of :
+
+- **Data Acquisition & Integration:**  
+  Learned how to work with real-world datasets from platforms like Kaggle and combine multiple sources (movies and credits data) into a unified structure.
+
+- **Data Cleaning & Feature Engineering:**  
+  Practiced handling missing values and transforming complex columns into usable formats to create meaningful features like `tags`.
+
+- **Text Processing & Vectorization:**  
+  Gained insight into the Bag of Words (BoW) model, stemming, and stopword removal to convert text into numerical vectors.
+
+- **Similarity Measurement:**  
+  Applied cosine similarity to evaluate how closely related two movies are based on their vectorized features.
+
+- **Recommendation Systems:**  
+  Built a custom content-based recommendation engine that suggests similar movies based on selected movie attributes.
+
+- **User Interface Design (Streamlit):**  
+  Designed a clean, interactive web interface that delivers movie recommendations along with poster visuals for a better user experience.
+
+- **Project Structuring & Documentation:**  
+  Strengthened my ability to organize machine learning projects effectively, write readable code, and document the workflow clearly.
+
+---
+
+## 11. 🔗 Project Links
 
 | Resource              | Link                                                                 |
 |-----------------------|----------------------------------------------------------------------|
