@@ -136,5 +136,4 @@ By completing this project, I gained hands-on experience and a deeper understand
 | Resource              | Link                                                                 |
 |-----------------------|----------------------------------------------------------------------|
 | 📂 GitHub Repository  | https://github.com/Aryanupadhyay23/Movie-Recommender-System-Project |
-| 📂 Onedrive           | https://1drv.ms/f/s!AnIMLJJR3BeYcN944wrLT0-XUjI?e=Xd48UG |
 | 📂 LIVE LINK          | https://huggingface.co/spaces/Aryan2301/Movie-Recommender-System |
